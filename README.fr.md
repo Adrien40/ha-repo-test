@@ -41,7 +41,7 @@ Si ce projet vous est utile, vous pouvez soutenir son développement 🙏
 <p align="center">
   <em>📊 Vue d’ensemble des données de la piscine dans Home Assistant</em>
   <br>
-  <a href="docs/dashboard_example.fr.md">👉 Obtenir le YAML du dashboard</a>
+  👉 <a href="docs/dashboard_example.fr.md"><strong>Obtenir le YAML du dashboard</strong></a>
 </p>
 
 ---

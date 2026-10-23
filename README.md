@@ -41,7 +41,7 @@ If this project is useful to you, you can support its development 🙏
 <p align="center">
   <em>📊 Overview of pool data in Home Assistant</em>
   <br>
-  👉 <a href="docs/dashboard_example.md"><strong>Get the dashboard YAML<strong></a>
+  👉 <a href="docs/dashboard_example.md"><strong>Get the dashboard YAML</strong></a>
 </p>
 
 ---
