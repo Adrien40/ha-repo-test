@@ -34,8 +34,8 @@ The YAML below uses the entity IDs of a **Blue Connect Gold** (`sensor.blue_conn
 | `sensor.blue_connect_gold_temperature` | Temperature |
 | `sensor.blue_connect_gold_ph` | pH |
 | `sensor.blue_connect_gold_orp_redox` | ORP (Redox) |
-| `sensor.blue_connect_gold_conductivite` | Conductivity (`_conductivity` with an English interface) |
-| `sensor.blue_connect_gold_batterie` | Battery (`_battery` with an English interface) |
+| `sensor.blue_connect_gold_conductivity` | Conductivity (`_conductivite` with a French interface) |
+| `sensor.blue_connect_gold_battery` | Battery (`_batterie` with a French interface) |
 
 > 💡 The exact IDs are in **Settings** > **Devices & services** > **Blue Connect Local** > *entities*. The easiest way is a *Find & Replace* of `blue_connect_gold` with your own prefix in the editor.
 
@@ -63,7 +63,7 @@ badges:
   - type: custom:mushroom-template-badge
     icon: mdi:battery
     content: >-
-      {{ "{:,.0f}".format(states('sensor.blue_connect_gold_batterie') | float) |
+      {{ "{:,.0f}".format(states('sensor.blue_connect_gold_battery') | float) |
       replace(',', ' ') }} %
     card_mod:
       style: |
@@ -76,15 +76,15 @@ badges:
       {% set last_up = states.sensor.blue_connect_gold_temperature.last_updated
       %} {% if last_up is not none %}
         {% set diff = (as_timestamp(last_up) - as_timestamp(now())) | abs | int %}
-        {% set heures = (diff // 3600) %}
+        {% set hours = (diff // 3600) %}
         {% set minutes = ((diff % 3600) // 60) %}
-        {%- if heures > 0 -%}
-          Il y a {{ heures }} h
+        {%- if hours > 0 -%}
+          {{ hours }} h ago
         {%- else -%}
-          Il y a {{ minutes }} min
+          {{ minutes }} min ago
         {%- endif -%}
       {% else %}
-        Inconnu
+        Unknown
       {% endif %}
     card_mod:
       style: |
@@ -96,9 +96,9 @@ badges:
     content: >-
       {% set last_up = states.sensor.blue_connect_gold_temperature.last_updated
       %} {% if last_up is not none %}
-        {{ as_timestamp(last_up) | timestamp_custom('%Hh%M') }}
+        {{ as_timestamp(last_up) | timestamp_custom('%H:%M') }}
       {% else %}
-        --h--
+        --:--
       {% endif %}
     card_mod:
       style: |
@@ -123,7 +123,7 @@ cards:
     decimals: 2
     entities:
       - entity: sensor.blue_connect_gold_temperature
-        name: 🌡️ Température
+        name: 🌡️ Temperature
     color_thresholds:
       - value: 20
         color: '#00AEEF'
@@ -147,7 +147,7 @@ cards:
       graph: line
       extrema: true
       legend: false
-    locale: fr
+    locale: en
     hour24: true
     icon: mdi:thermometer-water
   - type: custom:mini-graph-card
@@ -179,7 +179,7 @@ cards:
       graph: line
       extrema: true
       legend: false
-    locale: fr
+    locale: en
     hour24: true
     icon: mdi:ph
   - type: custom:mini-graph-card
@@ -210,14 +210,14 @@ cards:
       graph: line
       extrema: true
       legend: false
-    locale: fr
+    locale: en
     hour24: true
     icon: mdi:flask-outline
   - type: custom:mini-graph-card
     cache: false
     entities:
-      - entity: sensor.blue_connect_gold_conductivite
-        name: 💧 Conductivité
+      - entity: sensor.blue_connect_gold_conductivity
+        name: 💧 Conductivity
     color_thresholds:
       - value: 0
         color: '#FF4500'
@@ -245,7 +245,7 @@ cards:
       graph: line
       extrema: true
       legend: false
-    locale: fr
+    locale: en
     hour24: true
     icon: mdi:chart-timeline-variant
 grid_options:
@@ -264,6 +264,6 @@ For smaller graphs (narrow section, phone), use the same YAML as step 5 and chan
 
 * **Colour thresholds** (`color_thresholds`): each `value` is the point where the line starts to take the given colour. The green zones match an ideal pool (pH 7.0 – 7.2, ORP 680 – 760 mV, temperature 27 – 29.5 °C). Adapt them to your own targets, especially the conductivity ones, which depend on your water (fresh or salt).
 * **Time window**: change `hours_to_show` (e.g. `72` for three days) and `points_per_hour` to smooth or refine the curve.
-* **Language**: `locale: fr` controls the number format (decimal comma). Use `locale: en` for a decimal point.
-* **Texts**: the graph names (*Température*, *Conductivité*…) and the badge wording (*"Il y a … h / min"*, *"Inconnu"*) are in French in the YAML; translate them if needed.
+* **Language**: `locale: en` controls the number format (decimal point). Use `locale: fr` for a decimal comma.
+* **Texts**: the graph names and the badge wording (*"… h / min ago"*, *"Unknown"*) are written in the YAML; change them if needed.
 * **Heading**: change `heading: Blue Connect Local` to the name you want.

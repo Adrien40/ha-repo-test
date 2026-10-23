@@ -99,7 +99,6 @@ Blue Connect Local replaces the cloud with a **local control** solution, while o
 * 🔄 **Sync Modes**: Passive Mode (silent, battery-saving listening) and Active Mode (on-demand Bluetooth analyses via the access code).
 * ⏱️ **Scheduled Analyses on Fixed Time Slots** (Active Mode): set an **Analysis Interval** and a **Reference Time**; analyses run at the same times every day instead of on a rolling interval (see *Scheduled Analyses* below).
 * 🌍 **Multi-language**: Developed in French 🇫🇷 and available in EN, ES, DE, IT, NL, PL, PT, PT-BR, SV, RU, ZH-HANS, ZH-HANT, CS, HU, EL, HR, DA, NB (AI-translated).
-* 📡 Turns your Blue Connect into a true **BLE sensor** for Home Assistant
 
 ---
 
